@@ -1,0 +1,111 @@
+{
+  "env": {
+    "es2020": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "tsconfigRootDir": "./"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "import"
+  ],
+  "rules": {
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "interface",
+        "prefix": [
+          "I"
+        ],
+        "format": [
+          "PascalCase"
+        ]
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "_"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.ts",
+          "**/*.test.tsx"
+        ]
+      }
+    ],
+    "prettier/prettier": "error",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never"
+      }
+    ],
+    "no-useless-constructor": "off",
+    "class-methods-use-this": "off",
+    "camelcase": "off",
+    "import/prefer-default-export": "off",
+    "no-param-reassign": "off",
+    "no-plusplus": "off",
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": [
+          "_id",
+          "_doc"
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/migrations/*.ts"
+      ],
+      "rules": {
+        "@typescript-eslint/no-empty-function": [
+          "off"
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "off"
+        ]
+      }
+    },
+    {
+      "files": [
+        "**/*.ts"
+      ],
+      "rules": {
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": [
+          "error"
+        ]
+      }
+    }
+  ],
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
+}
